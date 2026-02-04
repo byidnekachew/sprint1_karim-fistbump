@@ -1,29 +1,26 @@
-Game Title: [Your game name]
+**Game Title:** Karim Fist-bumper
 
-Game Type: [Dungeon Crawler / Text Adventure / Card Game / Trivia / Other]
+**Game Type:** Clicker game
 
-Win Condition:
-[What does the player do to win? Be specific.]
+**Win Condition:**
+Unlock all powerups and special characters to fist bump
 
-Lose Condition:
-[What causes a loss? Can they tie?]
+**Lose Condition:**
+N/A. You just wouldn't finish the game.
 
-Core Mechanics (3–5 features that MUST work):
-1. [e.g., "Move between rooms"; "Guess a number"; "Play a card"]
-2. [e.g., "Health decreases when damaged"; "Score accumulates"; "Inventory limits"]
-3. [e.g., "Combat system"; "Puzzle logic"; "Betting system"]
-4. [Optional]
-5. [Optional]
+**Core Mechanics (3–5 features that MUST work):**
+1. An ability to click Karim and get points
+2. Able to purchase powerups & cosmetics
+3. Graphics are visible and render when a user interacts
 
-Player Input (What does the user type?):
-[e.g., "Commands: move north/south/east/west, attack, inventory, quit"]
-[e.g., "Enter a number between 1 and 100"]
+**Player Input (What does the user type?):**
+The user clicks a central image in order to play the game. There will be various buttons in order to interact with the features of the game.
 
-Inputs We Will Validate (QA Test Ideas):
-[e.g., "What if user enters 'xyz'? What if they enter -5? What if they enter 999?"]
+**Inputs We Will Validate (QA Test Ideas):**
+We expect a left mouse click on all buttons. Other inputs, such as keyboard inputs and right clicks will be tested. 
 
 Known Limitations (Be honest):
-[What will we NOT have time to build? Fancy graphics? AI opponents? Multiplayer?]
+We likely won't be able to build in minigames, easter eggs, or high detailed graphics.
 
 Tech Stack:
-[Python in terminal] OR [Replit web game] OR [Local Python setup]
+We will use the webdev suite with JavaScript, HTML, and possibly some CSS.
