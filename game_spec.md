@@ -19,8 +19,8 @@ The user clicks a central image in order to play the game. There will be various
 **Inputs We Will Validate (QA Test Ideas):**
 We expect a left mouse click on all buttons. Other inputs, such as keyboard inputs and right clicks will be tested. 
 
-Known Limitations (Be honest):
+**Known Limitations (Be honest):**
 We likely won't be able to build in minigames, easter eggs, or high detailed graphics.
 
-Tech Stack:
+**Tech Stack:**
 We will use the webdev suite with JavaScript, HTML, and possibly some CSS.
