@@ -1,7 +1,7 @@
 # Day 2
 ## Date: 2/5/2026   
    
-## [Person 1 Name]   
+## [Lucas]   
 **What I did:** [Yesterday or since last standup]   
 **What I'm doing:** [Today's focus]   
 **Blocked?** [Yes/No — if yes, what?]   
