@@ -220,9 +220,39 @@
                 transform: rotate(0deg) translateX(180px) rotate(0deg) scale(0.25);
             }
             to {
-                 transform: rotate(360deg) translateX(180px) rotate(-360deg) scale(0.25);
+                transform: rotate(360deg) translateX(180px) rotate(-360deg) scale(0.25);
             }
         }
+
+        .random-fist {
+            position: fixed;
+            width: 45px;
+            height: 45px;
+            cursor: pointer;
+            z-index: 999;
+            animation: popIn 0.15s ease-out;
+        }
+
+        .random-picture img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            pointer-events: none;
+        }
+
+        .randome-fist:hover {
+            transform: scale(1.2);
+        }
+
+        @keyframes popIn {
+            from {
+                transform: scale(0);
+            }
+            to {
+                transform: scale(1);
+            }
+        }
+
 
 
         ::-webkit-scrollbar {
@@ -399,7 +429,7 @@
                     addBuddy(item.imageSrc, item.count);
                 }
 
-                 if (item.id === 'airpods' || item.id === 'beanie') {
+                if (item.id === 'airpods' || item.id === 'beanie') {
                     updateKarimImage();
                 }
 
@@ -419,6 +449,44 @@
 
             karimElement.appendChild(buddy);
         }
+
+        //Spawn a random fist
+        function spawnRandomPicture() {
+            const pic = document.createElement('img');
+            pic.className = 'random-picture';
+
+            // Image you want to use
+            pic.src = './Punch-Green.png'; // change to any image
+
+            // Left side only
+            const x = Math.random() * (window.innerWidth * 0.25);
+            const y = Math.random() * (window.innerHeight - 100);
+
+            pic.style.left = `${x}px`;
+            pic.style.top = `${y}px`;
+
+            pic.addEventListener('click', () => {
+                coins += 10; // reward
+                updateDisplay();
+                pic.remove();
+            });
+
+            document.body.appendChild(pic);
+
+            // Remove if not clicked
+            setTimeout(() => {
+                if (pic.parentElement) {
+                    pic.remove();
+                }
+            }, 3000);
+        }
+
+        setInterval(() => {
+            if (Math.random() < 0.3) {
+                spawnRandomPicture();
+            }
+        }, 2000);
+
 
         // Update Karim's appearance based on owned items
         function updateKarimImage() {
