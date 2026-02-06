@@ -211,7 +211,6 @@
             pointer-events: none;
             animation: orbit 6s linear infinite;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-
             object-fit: cover;
         }
 
@@ -224,16 +223,23 @@
             }
         }
 
-        .random-fist {
+        .random-picture {
             position: fixed;
-            width: 40px;
-            height: 40px;
+            width: 45px;
+            height: 45px;
             cursor: pointer;
             z-index: 999;
             animation: popIn 0.15s ease-out;
         }
 
-        .random-fist:hover {
+        .random-picture img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            pointer-events: none;
+        }
+
+        .random-picture:hover {
             transform: scale(1.2);
         }
 
@@ -246,7 +252,160 @@
             }
         }
 
+        /* Timing Meter Overlay */
+        .meter-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.75);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            backdrop-filter: blur(5px);
+        }
 
+        .meter-container {
+            background: rgba(30, 30, 50, 0.95);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .meter-title {
+            font-size: 28px;
+            font-weight: bold;
+            color: #ffd700;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+            margin-bottom: 10px;
+        }
+
+        .meter-bar {
+            width: 80px;
+            height: 400px;
+            background: linear-gradient(to top, 
+                #ff4444 0%, 
+                #ff8844 40%, 
+                #44ff44 85%, 
+                #44ff44 100%);
+            border-radius: 40px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.3),
+                        inset 0 0 20px rgba(0, 0, 0, 0.3);
+            border: 3px solid rgba(255, 215, 0, 0.5);
+        }
+
+        .green-zone {
+            position: absolute;
+            width: 100%;
+            height: 15%;
+            top: 0;
+            background: rgba(68, 255, 68, 0.3);
+            border: 2px dashed rgba(255, 255, 255, 0.5);
+            box-shadow: 0 0 15px rgba(68, 255, 68, 0.6);
+        }
+
+        .meter-marker {
+            position: absolute;
+            width: 100%;
+            height: 20px;
+            background: white;
+            bottom: 0;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            transition: none;
+        }
+
+        .meter-button {
+            padding: 15px 40px;
+            font-size: 20px;
+            font-weight: bold;
+            background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            color: #333;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.1s, box-shadow 0.1s;
+        }
+
+        .meter-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 7px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .meter-button:active {
+            transform: translateY(0);
+        }
+
+        .meter-instruction {
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.8);
+            text-align: center;
+        }
+
+        .multiplier-display {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #ff6b6b, #ffd700);
+            padding: 15px 30px;
+            border-radius: 15px;
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+            z-index: 1000;
+            animation: pulse 1s ease-in-out infinite;
+        }
+
+        .multiplier-display.good {
+            background: linear-gradient(135deg, #44ff44, #22dd22);
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: translateX(-50%) scale(1); }
+            50% { transform: translateX(-50%) scale(1.05); }
+        }
+
+        .result-flash {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 60px;
+            font-weight: bold;
+            color: white;
+            text-shadow: 0 0 30px currentColor;
+            pointer-events: none;
+            z-index: 10000;
+            animation: flashResult 0.8s ease-out forwards;
+        }
+
+        @keyframes flashResult {
+            0% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0.5);
+            }
+            50% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1.2);
+            }
+            100% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(1);
+            }
+        }
 
         ::-webkit-scrollbar {
             width: 8px;
@@ -291,6 +450,9 @@
         let coins = 0;
         let coinsPerClick = 1;
         let coinsPerSecond = 0;
+        let globalMultiplier = 1;
+        let multiplierTimeoutId = null;
+        let meterActive = false;
 
         // Shop items data
         const shopItems = [
@@ -385,14 +547,15 @@
 
         // Click Karim
         karimElement.addEventListener('click', (e) => {
-            coins += coinsPerClick;
+            coins += coinsPerClick * globalMultiplier;
             updateDisplay();
             renderShop();
 
             // Create floating text effect
             const effect = document.createElement('div');
             effect.className = 'click-effect';
-            effect.textContent = `+${coinsPerClick}`;
+            const actualGain = Math.floor(coinsPerClick * globalMultiplier);
+            effect.textContent = `+${actualGain}`;
             effect.style.left = (e.clientX - karimElement.getBoundingClientRect().left) + 'px';
             effect.style.top = (e.clientY - karimElement.getBoundingClientRect().top) + 'px';
             karimElement.appendChild(effect);
@@ -443,13 +606,153 @@
             karimElement.appendChild(buddy);
         }
 
+        // Timing meter mini-game
+        function startTimingMeter() {
+            if (meterActive) return;
+            meterActive = true;
+
+            // Create overlay
+            const overlay = document.createElement('div');
+            overlay.className = 'meter-overlay';
+            overlay.id = 'meterOverlay';
+
+            overlay.innerHTML = `
+                <div class="meter-container">
+                    <div class="meter-title">HIT THE GREEN!</div>
+                    <div class="meter-bar">
+                        <div class="green-zone"></div>
+                        <div class="meter-marker" id="meterMarker"></div>
+                    </div>
+                    <button class="meter-button" id="stopButton">STOP!</button>
+                    <div class="meter-instruction">Press SPACEBAR or click STOP</div>
+                </div>
+            `;
+
+            document.body.appendChild(overlay);
+
+            const marker = document.getElementById('meterMarker');
+            const stopButton = document.getElementById('stopButton');
+
+            let startTime = Date.now();
+            const duration = 1200; // 1.2 seconds
+            let animationId;
+            let stopped = false;
+
+            // Animate marker
+            function animateMarker() {
+                if (stopped) return;
+
+                const elapsed = Date.now() - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                
+                // Move from bottom (0%) to top (100%)
+                const position = progress * 100;
+                marker.style.bottom = position + '%';
+
+                if (progress < 1) {
+                    animationId = requestAnimationFrame(animateMarker);
+                } else {
+                    // Auto-stop at top - player didn't click, apply 0.5x reduction
+                    applyMultiplier(false);
+                    overlay.remove();
+                    meterActive = false;
+                }
+            }
+
+            // Stop meter function
+            function stopMeter(isSuccess) {
+                if (stopped) return;
+                stopped = true;
+                cancelAnimationFrame(animationId);
+
+                const markerPosition = parseFloat(marker.style.bottom) || 0;
+                const isGreen = markerPosition >= 85; // Green zone is top 15%
+
+                // Remove overlay
+                setTimeout(() => {
+                    overlay.remove();
+                    meterActive = false;
+                }, 100);
+
+                // Apply result
+                applyMultiplier(isGreen);
+            }
+
+            // Check position when stopped
+            function handleStop() {
+                const markerPosition = parseFloat(marker.style.bottom) || 0;
+                const isGreen = markerPosition >= 85;
+                stopMeter(isGreen);
+            }
+
+            // Event listeners
+            stopButton.addEventListener('click', handleStop);
+            
+            const spaceHandler = (e) => {
+                if (e.code === 'Space') {
+                    e.preventDefault();
+                    handleStop();
+                    document.removeEventListener('keydown', spaceHandler);
+                }
+            };
+            document.addEventListener('keydown', spaceHandler);
+
+            // Start animation
+            animateMarker();
+        }
+
+        function applyMultiplier(isSuccess) {
+            // Clear existing multiplier timer
+            if (multiplierTimeoutId) {
+                clearTimeout(multiplierTimeoutId);
+                const oldDisplay = document.getElementById('multiplierDisplay');
+                if (oldDisplay) oldDisplay.remove();
+            }
+
+            // Set new multiplier
+            globalMultiplier = isSuccess ? 2 : 0.5;
+
+            // Show result flash
+            const flash = document.createElement('div');
+            flash.className = 'result-flash';
+            flash.textContent = isSuccess ? 'PERFECT! 2x COINS' : 'MISS! 0.5x COINS';
+            flash.style.color = isSuccess ? '#44ff44' : '#ff4444';
+            document.body.appendChild(flash);
+            setTimeout(() => flash.remove(), 800);
+
+            // Create multiplier display
+            const display = document.createElement('div');
+            display.id = 'multiplierDisplay';
+            display.className = `multiplier-display ${isSuccess ? 'good' : ''}`;
+            document.body.appendChild(display);
+
+            let timeLeft = 15;
+            
+            function updateDisplay() {
+                if (!display.parentElement) return;
+                const emoji = globalMultiplier > 1 ? '🔥' : '❄️';
+                display.textContent = `${emoji} ${globalMultiplier}x Coins — ${timeLeft}s left`;
+                
+                timeLeft--;
+                if (timeLeft < 0) {
+                    globalMultiplier = 1;
+                    display.remove();
+                    multiplierTimeoutId = null;
+                } else {
+                    multiplierTimeoutId = setTimeout(updateDisplay, 1000);
+                }
+            }
+            
+            updateDisplay();
+        }
+
         //Spawn a random fist
         function spawnRandomPicture() {
             const pic = document.createElement('img');
-            pic.className = 'random-fist';
+            pic.className = 'random-picture';
 
             // Image you want to use
-            pic.src = './Punch-Green.png';
+            pic.src = './Punch-Green.png'; // change to any image
 
             // Left side only
             const x = Math.random() * (window.innerWidth * 0.25);
@@ -459,9 +762,8 @@
             pic.style.top = `${y}px`;
 
             pic.addEventListener('click', () => {
-                coins += 10; // reward
-                updateDisplay();
                 pic.remove();
+                startTimingMeter();
             });
 
             document.body.appendChild(pic);
@@ -475,10 +777,8 @@
         }
 
         setInterval(() => {
-            if (Math.random() < 0.3) {
-                spawnRandomPicture();
-            }
-        }, 2000);
+            spawnRandomPicture();
+        }, 120000); // Spawn once every 2 minutes
 
 
         // Update Karim's appearance based on owned items
@@ -542,7 +842,7 @@
         // Passive income
         setInterval(() => {
             if (coinsPerSecond > 0) {
-                coins += coinsPerSecond / 10;
+                coins += (coinsPerSecond / 10) * globalMultiplier;
                 updateDisplay();
             }
         }, 100);
