@@ -205,22 +205,25 @@
 
         .buddy {
             position: absolute;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
+            width: 10px;
+            height: 10px;
+            border-radius: 25%;
             pointer-events: none;
             animation: orbit 6s linear infinite;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+
+            object-fit: cover;
         }
 
         @keyframes orbit {
             from {
-                transform: rotate(0deg) translateX(180px) rotate(0deg);
+                transform: rotate(0deg) translateX(180px) rotate(0deg) scale(0.25);
             }
             to {
-                transform: rotate(360deg) translateX(180px) rotate(-360deg);
+                 transform: rotate(360deg) translateX(180px) rotate(-360deg) scale(0.25);
             }
-}
+        }
+
 
         ::-webkit-scrollbar {
             width: 8px;
@@ -425,13 +428,13 @@
             const karimImg = karimElement.querySelector('img');
     
             if (hasAirpods && hasBeanie) {
-                karimImg.src = 'karim-airpods-beanie.png'; // Both accessories
+                karimImg.src = './karim-beanie-airpods.png'; // Both accessories
             } else if (hasAirpods) {
-                karimImg.src = 'karim-airpods.png'; // Just AirPods
+                karimImg.src = './karim-airpods.png'; // Just AirPods
             } else if (hasBeanie) {
-                karimImg.src = 'karim-beanie.png'; // Just beanie
+                karimImg.src = './karim-beanie.png'; // Just beanie
             } else {
-                karimImg.src = 'karimfistbumper.png'; // Default
+                karimImg.src = './karimfistbumper.png'; // Default
             }
         }
 
