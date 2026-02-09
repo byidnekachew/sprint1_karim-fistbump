@@ -552,7 +552,7 @@
                 effect: 0.1,
                 effectType: 'cps',
                 count: 0,
-                imageSrc: './Nayan-Transparent.png'
+                imageSrc: './resources/Nayan-Transparent.png'
             },
             {
                 id: 'airpods',
@@ -562,7 +562,7 @@
                 effect: 1,
                 effectType: 'cpc',
                 count: 0,
-                imageSrc: './airpods-transparent.png'
+                imageSrc: './resources/airpods-transparent.png'
             },
             {
                 id: 'beanie',
@@ -572,17 +572,17 @@
                 effect: 1,
                 effectType: 'cps',
                 count: 0,
-                imageSrc: './beanie.png'
+                imageSrc: './resources/beanie.png'
             },
             {
                 id: 'clickMultiplier2',
-                name: 'Diamond Knuckles',
-                description: 'Extra shiny, extra powerful',
+                name: 'MacBook',
+                description: 'Karim loves his shiny new laptop and decides to lock in',
                 baseCost: 250,
                 effect: 5,
                 effectType: 'cpc',
                 count: 0,
-                emoji: '💎'
+                imageSrc: './resources/MacBook.png'
             },
             {
                 id: 'autoClicker3',
@@ -902,13 +902,13 @@
             const karimImg = karimElement.querySelector('img');
 
             if (hasAirpods && hasBeanie) {
-                karimImg.src = './karim-beanie-airpods.png'; // Both accessories
+                karimImg.src = './resources/karim-beanie-airpods.png'; // Both accessories
             } else if (hasAirpods) {
-                karimImg.src = './karim-airpods.png'; // Just AirPods
+                karimImg.src = './resources/karim-airpods.png'; // Just AirPods
             } else if (hasBeanie) {
-                karimImg.src = './karim-beanie.png'; // Just beanie
+                karimImg.src = './resources/karim-beanie.png'; // Just beanie
             } else {
-                karimImg.src = './karimfistbumper.png'; // Default
+                karimImg.src = './resources/karimfistbumper.png'; // Default
             }
         }
 
