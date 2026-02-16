@@ -19,6 +19,7 @@ pic.addEventListener('click', () => {
     **pic.remove();**
     startTimingMeter();
 });
+```
 
 ## Bug 2: Game crashes after 800+ Nayans
 
@@ -32,3 +33,4 @@ Added `&& item.count <= 200` so that visually the Nayans cap at 200, but the use
 if (item.id === 'autoClicker1' && item.imageSrc && item.count <= 200) {
     addBuddy(item.imageSrc, item.count);
 }
+```
