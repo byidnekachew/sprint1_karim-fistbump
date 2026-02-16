@@ -14,11 +14,8 @@ setTimeout(() => {
     }
 }, 60000);
 
-and
-
-pic.remove(); to:
 
 pic.addEventListener('click', () => {
-    pic.remove();
+    **pic.remove();**
     startTimingMeter();
 });
