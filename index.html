@@ -913,6 +913,13 @@
             });
 
             document.body.appendChild(pic);
+            
+            // Remove if not clicked
+            setTimeout(() => {
+                if (pic.parentElement) {
+                    pic.remove();
+                }
+            }, 60000);
         }
 
         // Schedule random fist spawning every 30-60 seconds
@@ -1132,4 +1139,5 @@
 </body>
 
 </html>
+
 
