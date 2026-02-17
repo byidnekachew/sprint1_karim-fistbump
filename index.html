@@ -459,8 +459,8 @@
     </div>
 
     <!-- ===== MUSIC PLAYER =====
-         Just put song1.mp3, song2.mp3, song3.mp3 in the same folder as this file.
-         Press a numbered button to load & play that track.
+         Put song1.mp3, song2.mp3, song3.mp3, and 4THSONG.mp3 in the same
+         folder as this file. Press a numbered button to load & play that track.
          Press the same button again (or ⏸) to pause. Volume slider on the right. -->
     <div id="musicPlayer">
         <div id="nowPlaying">🎵 No track playing</div>
@@ -468,6 +468,7 @@
             <button class="track-btn" id="trackBtn1" onclick="switchTrack(0)">1</button>
             <button class="track-btn" id="trackBtn2" onclick="switchTrack(1)">2</button>
             <button class="track-btn" id="trackBtn3" onclick="switchTrack(2)">3</button>
+            <button class="track-btn" id="trackBtn4" onclick="switchTrack(3)">4</button>
         </div>
         <div class="player-controls">
             <button id="playPauseBtn" onclick="togglePlayPause()">▶</button>
@@ -820,13 +821,14 @@
         // ===================================================================
         // ===== MUSIC PLAYER ================================================
         // ===================================================================
-        // Drop song1.mp3, song2.mp3, song3.mp3 into the same folder as this
-        // HTML file. That's it — no other code changes needed.
+        // Drop song1.mp3, song2.mp3, song3.mp3, and 4THSONG.mp3 into the
+        // same folder as this HTML file. That's it — no other changes needed.
 
         const tracks = [
-            { file: 'song1.mp3', label: 'Song 1' },
-            { file: 'song2.mp3', label: 'Song 2' },
-            { file: 'song3.mp3', label: 'Song 3' }
+            { file: 'song1.mp3',   label: 'Song 1' },
+            { file: 'song2.mp3',   label: 'Song 2' },
+            { file: 'song3.mp3',   label: 'Song 3' },
+            { file: '4THSONG.mp3', label: 'Song 4' }   // ← rename file as needed
         ];
 
         const bgMusic      = document.getElementById('bgMusic');
@@ -838,7 +840,7 @@
         let currentTrackIndex = -1;   // -1 = nothing loaded yet
         let isPlaying         = false;
 
-        // Load and play a track (0, 1, or 2).
+        // Load and play a track (0, 1, 2, or 3).
         // Clicking the active track toggles play/pause instead.
         function switchTrack(index) {
             if (index === currentTrackIndex) {
@@ -900,4 +902,3 @@
     </script>
 </body>
 </html>
-
