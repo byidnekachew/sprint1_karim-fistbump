@@ -34,3 +34,18 @@ if (item.id === 'autoClicker1' && item.imageSrc && item.count <= 200) {
     addBuddy(item.imageSrc, item.count);
 }
 ```
+
+## Bug 3: Unable to buy upgrades even when the player can afford them  
+
+**Bug cause:** Intentional  
+
+**Fix:**  
+
+Re-rendered the shop on every click so the UI properly updates button states and purchase availability.
+
+Added this code:
+
+```javascript
+// Re-render shop on any click
+document.addEventListener('click', () => renderShop());
+```
