@@ -16,7 +16,6 @@
         /* Main body styling with background image */
         body {
             font-family: 'Arial', sans-serif;
-            /* background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); */
             background: url("cloudBackground.jpg");
             min-height: 100vh;
             display: flex;
@@ -47,34 +46,18 @@
             gap: 30px;
         }
 
-        /* Stats section styling */
-        .stats {
-            text-align: center;
-            width: 100%;
-        }
+        .stats { text-align: center; width: 100%; }
 
-        /* Coin count display */
         .coin-count {
             font-size: 48px;
             font-weight: bold;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
             margin-bottom: 10px;
         }
 
-        /* Coins per click display */
-        .coins-per-click {
-            font-size: 20px;
-            opacity: 0.9;
-        }
+        .coins-per-click { font-size: 20px; opacity: 0.9; }
+        .coins-per-second { font-size: 18px; opacity: 0.8; margin-top: 5px; }
 
-        /* Coins per second display */
-        .coins-per-second {
-            font-size: 18px;
-            opacity: 0.8;
-            margin-top: 5px;
-        }
-
-        /* Main clickable Karim circle */
         #karim {
             width: 300px;
             height: 300px;
@@ -86,30 +69,15 @@
             font-size: 100px;
             cursor: pointer;
             transition: transform 0.1s;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
             position: relative;
             user-select: none;
         }
 
-        /* Hover effect for Karim */
-        #karim:hover {
-            transform: scale(1.05);
-        }
+        #karim:hover  { transform: scale(1.05); }
+        #karim > img  { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+        #karim:active { transform: scale(0.95); }
 
-        /* Karim's image styling */
-        #karim>img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 50%;
-        }
-
-        /* Click effect for Karim */
-        #karim:active {
-            transform: scale(0.95);
-        }
-
-        /* Floating text effect when clicking Karim */
         .click-effect {
             position: absolute;
             font-size: 30px;
@@ -117,23 +85,14 @@
             color: #ffd700;
             pointer-events: none;
             animation: floatUp 1s ease-out forwards;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
         }
 
-        /* Animation for floating coin text */
         @keyframes floatUp {
-            0% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-
-            100% {
-                opacity: 0;
-                transform: translateY(-100px);
-            }
+            0%   { opacity: 1; transform: translateY(0); }
+            100% { opacity: 0; transform: translateY(-100px); }
         }
 
-        /* Snake game button in bottom left corner */
         #snakeBtn {
             position: fixed;
             bottom: 20px;
@@ -150,12 +109,8 @@
             z-index: 1000;
         }
 
-        /* Hover effect for snake button */
-        #snakeBtn:hover {
-            transform: scale(1.05);
-        }
+        #snakeBtn:hover { transform: scale(1.05); }
 
-        /* Full-screen overlay for snake game */
         #snakeOverlay {
             position: fixed;
             inset: 0;
@@ -166,7 +121,6 @@
             z-index: 2000;
         }
 
-        /* Container for snake game canvas */
         #snakeContainer {
             position: relative;
             background: black;
@@ -174,18 +128,12 @@
             border-radius: 16px;
         }
 
-        /* Snake game canvas */
-        #snakeGame {
-            border: 2px solid white;
-        }
+        #snakeGame { border: 2px solid white; }
 
-        /* Close button for snake game */
         #closeSnake {
             position: absolute;
-            top: -12px;
-            right: -12px;
-            width: 32px;
-            height: 32px;
+            top: -12px; right: -12px;
+            width: 32px; height: 32px;
             border-radius: 50%;
             border: none;
             cursor: pointer;
@@ -194,15 +142,8 @@
             font-weight: bold;
         }
 
-        /* Hint text below snake game */
-        .snake-hint {
-            text-align: center;
-            margin-top: 10px;
-            font-size: 14px;
-            opacity: 0.8;
-        }
+        .snake-hint { text-align: center; margin-top: 10px; font-size: 14px; opacity: 0.8; }
 
-        /* Right section containing shop items */
         .shop {
             flex: 1;
             background: rgba(93, 136, 185, 0.6);
@@ -213,16 +154,10 @@
             overflow-y: auto;
         }
 
-        /* Shop header */
-        .shop h2 {
-            text-align: center;
-            margin-bottom: 20px;
-            font-size: 28px;
-        }
+        .shop h2 { text-align: center; margin-bottom: 20px; font-size: 28px; }
 
-        /* Individual shop item card */
         .shop-item {
-            background: rgba(255, 255, 255, 0.6);
+            background: rgba(255,255,255,0.6);
             border-radius: 10px;
             padding: 24px;
             min-height: 110px;
@@ -232,140 +167,54 @@
             border: 2px solid;
         }
 
-        /* Hover effect for shop items */
-        .shop-item:hover {
-            background: rgba(255, 255, 255, 0.25);
-            border-color: #ffd700;
-        }
+        .shop-item:hover          { background: rgba(255,255,255,0.25); border-color: #ffd700; }
+        .shop-item.disabled       { opacity: 1; cursor: not-allowed; }
+        .shop-item.disabled:hover { background: rgba(255,255,255,0.15); border-color: transparent; }
 
-        /* Disabled state for unaffordable items */
-        .shop-item.disabled {
-            opacity: 1;
-            cursor: not-allowed;
-        }
+        .item-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+        .item-name   { font-size: 18px; font-weight: bold; color: black; }
+        .item-count  { background: rgba(29,25,2,0.3); padding: 3px 10px; border-radius: 12px; font-size: 14px; }
+        .item-description { font-size: 14px; opacity: 0.9; margin-bottom: 8px; color: rgb(77,6,6); }
+        .item-footer { display: flex; justify-content: space-between; align-items: center; }
+        .item-cost   { font-size: 16px; color: #756714; font-weight: bold; }
+        .item-effect { font-size: 13px; opacity: 1; }
 
-        /* Disabled hover state */
-        .shop-item.disabled:hover {
-            background: rgba(255, 255, 255, 0.15);
-            border-color: transparent;
-        }
-
-        /* Header section of shop item (name and count) */
-        .item-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 8px;
-        }
-
-        /* Item name styling */
-        .item-name {
-            font-size: 18px;
-            font-weight: bold;
-            color: black;
-        }
-
-        /* Item count badge */
-        .item-count {
-            background: rgba(29, 25, 2, 0.3);
-            padding: 3px 10px;
-            border-radius: 12px;
-            font-size: 14px;
-        }
-
-        /* Item description text */
-        .item-description {
-            font-size: 14px;
-            opacity: 0.9;
-            margin-bottom: 8px;
-            color: rgb(77, 6, 6);
-        }
-
-        /* Footer section of shop item (cost and effect) */
-        .item-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        /* Item cost display */
-        .item-cost {
-            font-size: 16px;
-            color: #756714;
-            font-weight: bold;
-        }
-
-        /* Item effect display */
-        .item-effect {
-            font-size: 13px;
-            opacity: 1;
-        }
-
-        /* Orbiting buddy characters around Karim */
         .buddy {
             position: absolute;
-            width: 10px;
-            height: 10px;
+            width: 10px; height: 10px;
             border-radius: 25%;
             pointer-events: none;
             animation: orbit 6s linear infinite;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
             object-fit: cover;
         }
 
-        /* Orbit animation for buddy characters */
         @keyframes orbit {
-            from {
-                transform: rotate(0deg) translateX(180px) rotate(0deg) scale(0.25);
-            }
-
-            to {
-                transform: rotate(360deg) translateX(180px) rotate(-360deg) scale(0.25);
-            }
+            from { transform: rotate(0deg)   translateX(180px) rotate(0deg)    scale(0.25); }
+            to   { transform: rotate(360deg) translateX(180px) rotate(-360deg) scale(0.25); }
         }
 
-        /* Random fist picture that spawns periodically */
         .random-picture {
             position: fixed;
-            width: 45px;
-            height: 45px;
+            width: 45px; height: 45px;
             cursor: pointer;
             z-index: 999;
             animation: popIn 0.15s ease-out;
         }
 
-        /* Image inside random picture */
-        .random-picture img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            pointer-events: none;
-        }
+        .random-picture img  { width: 100%; height: 100%; object-fit: contain; pointer-events: none; }
+        .random-picture:hover { transform: scale(1.2); }
 
-        /* Hover effect for random fist */
-        .random-picture:hover {
-            transform: scale(1.2);
-        }
-
-        /* Pop-in animation for random fist */
         @keyframes popIn {
-            from {
-                transform: scale(0);
-            }
-
-            to {
-                transform: scale(1);
-            }
+            from { transform: scale(0); }
+            to   { transform: scale(1); }
         }
 
-        /* Full-screen overlay for timing meter mini-game */
         .meter-overlay {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background: rgba(0, 0, 0, 0.75);
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
+            background: rgba(0,0,0,0.75);
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -374,68 +223,54 @@
             backdrop-filter: blur(5px);
         }
 
-        /* Container for timing meter elements */
         .meter-container {
-            background: rgba(30, 30, 50, 0.95);
+            background: rgba(30,30,50,0.95);
             padding: 40px;
             border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
             display: flex;
             flex-direction: column;
             align-items: center;
             gap: 20px;
         }
 
-        /* Title for timing meter */
         .meter-title {
             font-size: 28px;
             font-weight: bold;
             color: #ffd700;
-            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+            text-shadow: 0 0 10px rgba(255,215,0,0.5);
             margin-bottom: 10px;
         }
 
-        /* Vertical meter bar with color gradient */
         .meter-bar {
-            width: 80px;
-            height: 400px;
-            background: linear-gradient(to top,
-                    #ff4444 0%,
-                    #ff8844 40%,
-                    #44ff44 85%,
-                    #44ff44 100%);
+            width: 80px; height: 400px;
+            background: linear-gradient(to top, #ff4444 0%, #ff8844 40%, #44ff44 85%, #44ff44 100%);
             border-radius: 40px;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 0 20px rgba(255, 215, 0, 0.3),
-                inset 0 0 20px rgba(0, 0, 0, 0.3);
-            border: 3px solid rgba(255, 215, 0, 0.5);
+            box-shadow: 0 0 20px rgba(255,215,0,0.3), inset 0 0 20px rgba(0,0,0,0.3);
+            border: 3px solid rgba(255,215,0,0.5);
         }
 
-        /* Green target zone at top of meter */
         .green-zone {
             position: absolute;
-            width: 100%;
-            height: 15%;
+            width: 100%; height: 15%;
             top: 0;
-            background: rgba(68, 255, 68, 0.3);
-            border: 2px dashed rgba(255, 255, 255, 0.5);
-            box-shadow: 0 0 15px rgba(68, 255, 68, 0.6);
+            background: rgba(68,255,68,0.3);
+            border: 2px dashed rgba(255,255,255,0.5);
+            box-shadow: 0 0 15px rgba(68,255,68,0.6);
         }
 
-        /* Moving marker on the meter */
         .meter-marker {
             position: absolute;
-            width: 100%;
-            height: 20px;
+            width: 100%; height: 20px;
             background: white;
             bottom: 0;
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+            box-shadow: 0 0 20px rgba(255,255,255,0.8);
             border-radius: 10px;
             transition: none;
         }
 
-        /* Stop button for timing meter */
         .meter-button {
             padding: 15px 40px;
             font-size: 20px;
@@ -445,33 +280,17 @@
             border-radius: 10px;
             cursor: pointer;
             color: #333;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
             transition: transform 0.1s, box-shadow 0.1s;
         }
 
-        /* Hover effect for meter button */
-        .meter-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 7px 20px rgba(0, 0, 0, 0.4);
-        }
+        .meter-button:hover   { transform: translateY(-2px); box-shadow: 0 7px 20px rgba(0,0,0,0.4); }
+        .meter-button:active  { transform: translateY(0); }
+        .meter-instruction    { font-size: 16px; color: rgba(255,255,255,0.8); text-align: center; }
 
-        /* Active state for meter button */
-        .meter-button:active {
-            transform: translateY(0);
-        }
-
-        /* Instruction text for timing meter */
-        .meter-instruction {
-            font-size: 16px;
-            color: rgba(255, 255, 255, 0.8);
-            text-align: center;
-        }
-
-        /* Display for active coin multiplier */
         .multiplier-display {
             position: fixed;
-            top: 20px;
-            left: 50%;
+            top: 20px; left: 50%;
             transform: translateX(-50%);
             background: linear-gradient(135deg, #ff6b6b, #ffd700);
             padding: 15px 30px;
@@ -479,35 +298,22 @@
             font-size: 24px;
             font-weight: bold;
             color: white;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.4);
             z-index: 1000;
             animation: pulse 1s ease-in-out infinite;
         }
 
-        /* Green variant for good multiplier */
-        .multiplier-display.good {
-            background: linear-gradient(135deg, #44ff44, #22dd22);
-        }
+        .multiplier-display.good { background: linear-gradient(135deg, #44ff44, #22dd22); }
 
-        /* Pulsing animation for multiplier display */
         @keyframes pulse {
-
-            0%,
-            100% {
-                transform: translateX(-50%) scale(1);
-            }
-
-            50% {
-                transform: translateX(-50%) scale(1.05);
-            }
+            0%, 100% { transform: translateX(-50%) scale(1); }
+            50%       { transform: translateX(-50%) scale(1.05); }
         }
 
-        /* Flash effect showing result of timing meter */
         .result-flash {
             position: fixed;
-            top: 50%;
-            left: 50%;
+            top: 50%; left: 50%;
             transform: translate(-50%, -50%);
             font-size: 60px;
             font-weight: bold;
@@ -518,54 +324,132 @@
             animation: flashResult 0.8s ease-out forwards;
         }
 
-        /* Animation for result flash */
         @keyframes flashResult {
-            0% {
-                opacity: 0;
-                transform: translate(-50%, -50%) scale(0.5);
-            }
-
-            50% {
-                opacity: 1;
-                transform: translate(-50%, -50%) scale(1.2);
-            }
-
-            100% {
-                opacity: 0;
-                transform: translate(-50%, -50%) scale(1);
-            }
+            0%   { opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
+            50%  { opacity: 1; transform: translate(-50%, -50%) scale(1.2); }
+            100% { opacity: 0; transform: translate(-50%, -50%) scale(1); }
         }
 
-        /* Custom scrollbar width */
-        ::-webkit-scrollbar {
-            width: 8px;
+        ::-webkit-scrollbar        { width: 8px; }
+        ::-webkit-scrollbar-track  { background: rgba(255,255,255,0.1); border-radius: 10px; }
+        ::-webkit-scrollbar-thumb  { background: rgba(255,215,0,0.5);   border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: rgba(255,215,0,0.7); }
+
+        /* ===== MUSIC PLAYER ===== */
+        #musicPlayer {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(20, 20, 50, 0.92);
+            border-radius: 16px;
+            padding: 14px 18px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 6px 24px rgba(0,0,0,0.5);
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            min-width: 210px;
+            border: 1px solid rgba(255,215,0,0.25);
         }
 
-        /* Custom scrollbar track */
-        ::-webkit-scrollbar-track {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
+        /* "Now Playing" label */
+        #nowPlaying {
+            font-size: 13px;
+            color: #ffd700;
+            font-weight: bold;
+            letter-spacing: 0.4px;
+            text-align: center;
         }
 
-        /* Custom scrollbar thumb */
-        ::-webkit-scrollbar-thumb {
-            background: rgba(255, 215, 0, 0.5);
-            border-radius: 10px;
+        /* Row of numbered track buttons */
+        .track-buttons { display: flex; gap: 8px; }
+
+        .track-btn {
+            padding: 6px 14px;
+            border-radius: 8px;
+            border: 2px solid rgba(255,215,0,0.35);
+            background: rgba(255,255,255,0.08);
+            color: white;
+            font-size: 13px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.2s;
         }
 
-        /* Custom scrollbar thumb hover */
-        ::-webkit-scrollbar-thumb:hover {
-            background: rgba(255, 215, 0, 0.7);
+        .track-btn:hover  { background: rgba(255,215,0,0.2); border-color: #ffd700; }
+
+        /* Highlight the currently selected track */
+        .track-btn.active {
+            background: linear-gradient(135deg, #ffd700, #ffed4e);
+            color: #333;
+            border-color: #ffd700;
         }
+
+        /* Play/pause + volume row */
+        .player-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            width: 100%;
+            justify-content: center;
+        }
+
+        #playPauseBtn {
+            width: 36px; height: 36px;
+            border-radius: 50%;
+            border: none;
+            background: linear-gradient(135deg, #ffd700, #ffed4e);
+            color: #333;
+            font-size: 15px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+            transition: transform 0.1s;
+            flex-shrink: 0;
+        }
+
+        #playPauseBtn:hover { transform: scale(1.1); }
+
+        #volumeSlider {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 90px; height: 4px;
+            border-radius: 2px;
+            background: rgba(255,255,255,0.2);
+            outline: none;
+            cursor: pointer;
+        }
+
+        #volumeSlider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 14px; height: 14px;
+            border-radius: 50%;
+            background: #ffd700;
+            cursor: pointer;
+        }
+
+        #volumeSlider::-moz-range-thumb {
+            width: 14px; height: 14px;
+            border-radius: 50%;
+            background: #ffd700;
+            cursor: pointer;
+            border: none;
+        }
+
+        .vol-icon { font-size: 14px; opacity: 0.8; }
     </style>
 </head>
 
 <body>
 
-    <!-- Button to open snake mini-game -->
+    <!-- Snake game button -->
     <button id="snakeBtn">🐍 Play Snake</button>
 
-    <!-- Snake game overlay (hidden by default) -->
+    <!-- Snake game overlay -->
     <div id="snakeOverlay">
         <div id="snakeContainer">
             <button id="closeSnake">✖</button>
@@ -574,23 +458,41 @@
         </div>
     </div>
 
-    <!-- Main game container -->
+    <!-- ===== MUSIC PLAYER =====
+         Just put song1.mp3, song2.mp3, song3.mp3 in the same folder as this file.
+         Press a numbered button to load & play that track.
+         Press the same button again (or ⏸) to pause. Volume slider on the right. -->
+    <div id="musicPlayer">
+        <div id="nowPlaying">🎵 No track playing</div>
+        <div class="track-buttons">
+            <button class="track-btn" id="trackBtn1" onclick="switchTrack(0)">1</button>
+            <button class="track-btn" id="trackBtn2" onclick="switchTrack(1)">2</button>
+            <button class="track-btn" id="trackBtn3" onclick="switchTrack(2)">3</button>
+        </div>
+        <div class="player-controls">
+            <button id="playPauseBtn" onclick="togglePlayPause()">▶</button>
+            <span class="vol-icon">🔊</span>
+            <input type="range" id="volumeSlider" min="0" max="1" step="0.01" value="0.5"
+                   oninput="setVolume(this.value)">
+        </div>
+    </div>
+
+    <!-- Hidden audio element (loop keeps it going) -->
+    <audio id="bgMusic" loop></audio>
+
+    <!-- Main game -->
     <div class="game-container">
-        <!-- Left section: Main game area -->
         <div class="main-game">
-            <!-- Stats display -->
             <div class="stats">
                 <div class="coin-count">💰 <span id="coins">0</span></div>
                 <div class="coins-per-click">+<span id="coinsPerClick">1</span> per fist bump</div>
                 <div class="coins-per-second"><span id="coinsPerSecond">0</span> coins/second</div>
             </div>
-            <!-- Clickable Karim character -->
             <div id="karim">
                 <img src="karimfistbumper.png" alt="Karim fist bump">
             </div>
         </div>
 
-        <!-- Right section: Shop -->
         <div class="shop">
             <h2>🛒 Upgrades</h2>
             <div id="shopItems"></div>
@@ -598,165 +500,115 @@
     </div>
 
     <script>
-        // ===== GAME STATE VARIABLES =====
-        let coins = 0;                      // Total coins earned
-        let coinsPerClick = 1;              // Coins earned per click on Karim
-        let coinsPerSecond = 0;             // Passive income rate
-        let globalMultiplier = 1;           // Current multiplier (2x, 0.5x, or 1x)
-        let multiplierTimeoutId = null;     // Timeout ID for multiplier duration
-        let meterActive = false;            // Whether timing meter mini-game is active
+        // ===== GAME STATE =====
+        let coins            = 0;
+        let coinsPerClick    = 1;
+        let coinsPerSecond   = 0;
+        let globalMultiplier = 1;
+        let multiplierTimeoutId = null;
+        let meterActive      = false;
 
-        // ===== SHOP ITEMS DATA =====
+        // ===== SHOP ITEMS =====
         const shopItems = [
             {
                 id: 'autoClicker1',
                 name: 'Nayan Patel',
                 description: 'He loves giving karim fist bumps',
-                baseCost: 10,               // Starting cost
-                effect: 0.1,                // Effect value
-                effectType: 'cps',          // Effect type: coins per second
-                count: 0,                   // Number owned
+                baseCost: 10, effect: 0.1, effectType: 'cps', count: 0,
                 imageSrc: './resources/Nayan-Transparent.png'
             },
             {
                 id: 'airpods',
                 name: 'Air Pods',
                 description: 'J Cole makes Karim stronger',
-                baseCost: 25,
-                effect: 1,
-                effectType: 'cpc',          // Effect type: coins per click
-                count: 0,
+                baseCost: 25, effect: 1, effectType: 'cpc', count: 0,
                 imageSrc: './resources/airpods-transparent.png'
             },
             {
                 id: 'beanie',
                 name: 'Beanie',
                 description: 'Snuggly beanie for a snuggly boy',
-                baseCost: 100,
-                effect: 1,
-                effectType: 'cps',
-                count: 0,
+                baseCost: 100, effect: 1, effectType: 'cps', count: 0,
                 imageSrc: './resources/beanie.png'
             },
             {
                 id: 'clickMultiplier2',
                 name: 'MacBook',
                 description: 'Karim loves his shiny new laptop and decides to lock in',
-                baseCost: 250,
-                effect: 5,
-                effectType: 'cpc',
-                count: 0,
+                baseCost: 250, effect: 5, effectType: 'cpc', count: 0,
                 imageSrc: './resources/MacBook.png'
             }
         ];
 
-        // ===== DOM ELEMENT REFERENCES =====
-        const karimElement = document.getElementById('karim');
-        const coinsDisplay = document.getElementById('coins');
+        // ===== DOM REFS =====
+        const karimElement         = document.getElementById('karim');
+        const coinsDisplay         = document.getElementById('coins');
         const coinsPerClickDisplay = document.getElementById('coinsPerClick');
-        const coinsPerSecondDisplay = document.getElementById('coinsPerSecond');
-        const shopItemsContainer = document.getElementById('shopItems');
+        const coinsPerSecondDisplay= document.getElementById('coinsPerSecond');
+        const shopItemsContainer   = document.getElementById('shopItems');
 
-        // ===== KARIM CLICK HANDLER =====
+        // ===== KARIM CLICK =====
         karimElement.addEventListener('click', (e) => {
-            // Add coins based on click value and multiplier
             coins += coinsPerClick * globalMultiplier;
             updateDisplay();
             renderShop();
 
-            // Create floating text effect showing coins gained
             const effect = document.createElement('div');
             effect.className = 'click-effect';
-            const actualGain = Math.floor(coinsPerClick * globalMultiplier);
-            effect.textContent = `+${actualGain}`;
-            // Position at click location relative to Karim
+            effect.textContent = `+${Math.floor(coinsPerClick * globalMultiplier)}`;
             effect.style.left = (e.clientX - karimElement.getBoundingClientRect().left) + 'px';
-            effect.style.top = (e.clientY - karimElement.getBoundingClientRect().top) + 'px';
+            effect.style.top  = (e.clientY - karimElement.getBoundingClientRect().top)  + 'px';
             karimElement.appendChild(effect);
-
-            // Remove floating text after animation completes
             setTimeout(() => effect.remove(), 1000);
         });
 
-        // ===== SHOP FUNCTIONS =====
-        
-        // Calculate cost of an item with exponential scaling
+        // ===== SHOP =====
         function getItemCost(item) {
             return Math.floor(item.baseCost * Math.pow(1.15, item.count));
         }
 
-        // Purchase an item from the shop
         function buyItem(item) {
             const cost = getItemCost(item);
             if (coins >= cost) {
-                coins -= cost;              // Deduct cost
-                item.count++;               // Increment count
+                coins -= cost;
+                item.count++;
+                if (item.effectType === 'cpc') coinsPerClick   += item.effect;
+                else if (item.effectType === 'cps') coinsPerSecond += item.effect;
 
-                // Apply item effect based on type
-                if (item.effectType === 'cpc') {
-                    coinsPerClick += item.effect;
-                } else if (item.effectType === 'cps') {
-                    coinsPerSecond += item.effect;
-                }
-
-                // Add orbiting buddy for Nayan Patel
-                if (item.id === 'autoClicker1' && item.imageSrc && item.count <= 200) {
-                    addBuddy(item.imageSrc, item.count);
-                }
-
-                // Update Karim's appearance for airpods or beanie
-                if (item.id === 'airpods' || item.id === 'beanie') {
-                    updateKarimImage();
-                }
+                if (item.id === 'autoClicker1' && item.count <= 200) addBuddy(item.imageSrc, item.count);
+                if (item.id === 'airpods' || item.id === 'beanie') updateKarimImage();
 
                 updateDisplay();
                 renderShop();
             }
         }
 
-        // ===== SNAKE MINI-GAME =====
-        const snakeBtn = document.getElementById('snakeBtn');
-        const snakeOverlay = document.getElementById('snakeOverlay');
-        const closeSnake = document.getElementById('closeSnake');
+        // ===== SNAKE =====
+        const snakeBtn    = document.getElementById('snakeBtn');
+        const snakeOverlay= document.getElementById('snakeOverlay');
+        const closeSnake  = document.getElementById('closeSnake');
+        let snakeRunning  = false;
 
-        let snakeRunning = false;
+        snakeBtn.addEventListener('click',   () => { snakeOverlay.style.display = 'flex'; snakeRunning = true; });
+        closeSnake.addEventListener('click', () => { snakeOverlay.style.display = 'none'; snakeRunning = false; });
 
-        // Open snake game overlay
-        snakeBtn.addEventListener('click', () => {
-            snakeOverlay.style.display = 'flex';
-            snakeRunning = true;
-        });
-
-        // Close snake game overlay
-        closeSnake.addEventListener('click', () => {
-            snakeOverlay.style.display = 'none';
-            snakeRunning = false;
-        });
-
-        // ===== BUDDY ORBIT FUNCTION =====
-        // Add an orbiting character around Karim
+        // ===== BUDDY ORBIT =====
         function addBuddy(imageSrc, count) {
             const buddy = document.createElement('img');
             buddy.src = imageSrc;
             buddy.className = 'buddy';
-
-            // Stagger animation delay based on count
-            const delay = (count - 1) * 0.5
-            buddy.style.animationDelay = `-${delay}s`;
-
+            buddy.style.animationDelay = `-${(count - 1) * 0.5}s`;
             karimElement.appendChild(buddy);
         }
 
-        // ===== TIMING METER MINI-GAME =====
+        // ===== TIMING METER =====
         function startTimingMeter() {
-            if (meterActive) return;        // Prevent multiple instances
+            if (meterActive) return;
             meterActive = true;
 
-            // Create overlay DOM element
             const overlay = document.createElement('div');
             overlay.className = 'meter-overlay';
             overlay.id = 'meterOverlay';
-
             overlay.innerHTML = `
                 <div class="meter-container">
                     <div class="meter-title">HIT THE GREEN!</div>
@@ -766,95 +618,49 @@
                     </div>
                     <button class="meter-button" id="stopButton">STOP!</button>
                     <div class="meter-instruction">Press SPACEBAR or click STOP</div>
-                </div>
-            `;
-
+                </div>`;
             document.body.appendChild(overlay);
 
-            const marker = document.getElementById('meterMarker');
+            const marker     = document.getElementById('meterMarker');
             const stopButton = document.getElementById('stopButton');
+            const duration   = 1200;
+            let startTime    = Date.now();
+            let animId, stopped = false;
 
-            let startTime = Date.now();
-            const duration = 1200;          // 1.2 seconds for full travel
-            let animationId;
-            let stopped = false;
-
-            // Animate marker moving up the bar
             function animateMarker() {
                 if (stopped) return;
-
-                const elapsed = Date.now() - startTime;
-                const progress = Math.min(elapsed / duration, 1);
-
-                // Move from bottom (0%) to top (100%)
-                const position = progress * 100;
-                marker.style.bottom = position + '%';
-
-                if (progress < 1) {
-                    animationId = requestAnimationFrame(animateMarker);
-                } else {
-                    // Auto-stop at top - player didn't click, apply penalty
-                    applyMultiplier(false);
-                    overlay.remove();
-                    meterActive = false;
-                }
+                const progress = Math.min((Date.now() - startTime) / duration, 1);
+                marker.style.bottom = (progress * 100) + '%';
+                if (progress < 1) { animId = requestAnimationFrame(animateMarker); }
+                else { applyMultiplier(false); overlay.remove(); meterActive = false; }
             }
 
-            // Stop meter and check result
-            function stopMeter(isSuccess) {
+            function stopMeter() {
                 if (stopped) return;
                 stopped = true;
-                cancelAnimationFrame(animationId);
-
-                const markerPosition = parseFloat(marker.style.bottom) || 0;
-                const isGreen = markerPosition >= 85; // Green zone is top 15%
-
-                // Remove overlay after brief delay
-                setTimeout(() => {
-                    overlay.remove();
-                    meterActive = false;
-                }, 100);
-
-                // Apply multiplier based on result
-                applyMultiplier(isGreen);
+                cancelAnimationFrame(animId);
+                const pos = parseFloat(marker.style.bottom) || 0;
+                setTimeout(() => { overlay.remove(); meterActive = false; }, 100);
+                applyMultiplier(pos >= 85);
             }
 
-            // Handle stop button click
-            function handleStop() {
-                const markerPosition = parseFloat(marker.style.bottom) || 0;
-                const isGreen = markerPosition >= 85;
-                stopMeter(isGreen);
-            }
-
-            // Event listeners for stop button and spacebar
-            stopButton.addEventListener('click', handleStop);
-
+            stopButton.addEventListener('click', stopMeter);
             const spaceHandler = (e) => {
-                if (e.code === 'Space') {
-                    e.preventDefault();
-                    handleStop();
-                    document.removeEventListener('keydown', spaceHandler);
-                }
+                if (e.code === 'Space') { e.preventDefault(); stopMeter(); document.removeEventListener('keydown', spaceHandler); }
             };
             document.addEventListener('keydown', spaceHandler);
-
-            // Start animation
             animateMarker();
         }
 
-        // Apply multiplier based on timing meter result
         function applyMultiplier(isSuccess) {
-            // Clear existing multiplier timer if present
             if (multiplierTimeoutId) {
                 clearTimeout(multiplierTimeoutId);
-                const oldDisplay = document.getElementById('multiplierDisplay');
-                if (oldDisplay) oldDisplay.remove();
+                const old = document.getElementById('multiplierDisplay');
+                if (old) old.remove();
             }
 
-            // Set new multiplier: 2x for success, 0.5x for failure
             globalMultiplier = isSuccess ? 2 : 0.5;
 
-            // Show result flash message
             const flash = document.createElement('div');
             flash.className = 'result-flash';
             flash.textContent = isSuccess ? 'PERFECT! 2x COINS' : 'MISS! 0.5x COINS';
@@ -862,282 +668,235 @@
             document.body.appendChild(flash);
             setTimeout(() => flash.remove(), 800);
 
-            // Create persistent multiplier display
             const display = document.createElement('div');
             display.id = 'multiplierDisplay';
             display.className = `multiplier-display ${isSuccess ? 'good' : ''}`;
             document.body.appendChild(display);
 
-            let timeLeft = 15;              // Multiplier lasts 15 seconds
-
-            // Update display every second
+            let timeLeft = 15;
             function updateDisplay() {
                 if (!display.parentElement) return;
-                const emoji = globalMultiplier > 1 ? '🔥' : '❄️';
-                display.textContent = `${emoji} ${globalMultiplier}x Coins — ${timeLeft}s left`;
-
+                display.textContent = `${globalMultiplier > 1 ? '🔥' : '❄️'} ${globalMultiplier}x Coins — ${timeLeft}s left`;
                 timeLeft--;
-                if (timeLeft < 0) {
-                    // Multiplier expired, reset to normal
-                    globalMultiplier = 1;
-                    display.remove();
-                    multiplierTimeoutId = null;
-                } else {
-                    multiplierTimeoutId = setTimeout(updateDisplay, 1000);
-                }
+                if (timeLeft < 0) { globalMultiplier = 1; display.remove(); multiplierTimeoutId = null; }
+                else { multiplierTimeoutId = setTimeout(updateDisplay, 1000); }
             }
-
             updateDisplay();
         }
 
-        // ===== RANDOM FIST SPAWNING =====
-        
-        // Spawn a clickable fist icon at random location
+        // ===== RANDOM FIST =====
         function spawnRandomPicture() {
             const pic = document.createElement('img');
             pic.className = 'random-picture';
-
-            // Fist image
             pic.src = './resources/Punch-Green.png';
-
-            // Random position on left 25% of screen
-            const x = Math.random() * (window.innerWidth * 0.25);
-            const y = Math.random() * (window.innerHeight - 100);
-
-            pic.style.left = `${x}px`;
-            pic.style.top = `${y}px`;
-
-            // Clicking fist triggers timing meter mini-game
-            pic.addEventListener('click', () => {
-                pic.remove();
-                startTimingMeter();
-            });
-
+            pic.style.left = `${Math.random() * window.innerWidth * 0.25}px`;
+            pic.style.top  = `${Math.random() * (window.innerHeight - 100)}px`;
+            pic.addEventListener('click', () => { pic.remove(); startTimingMeter(); });
             document.body.appendChild(pic);
-            
-            // Remove if not clicked
-            setTimeout(() => {
-                if (pic.parentElement) {
-                    pic.remove();
-                }
-            }, 60000);
+            setTimeout(() => { if (pic.parentElement) pic.remove(); }, 60000);
         }
 
-        // Schedule random fist spawning every 30-60 seconds
         function scheduleRandomPicture() {
-            const delay = Math.random() * (60000 - 30000) + 30000; // 30–60 seconds
-            setTimeout(() => {
-                spawnRandomPicture();
-                scheduleRandomPicture(); // Recursively schedule next spawn
-            }, delay);
+            setTimeout(() => { spawnRandomPicture(); scheduleRandomPicture(); },
+                       Math.random() * 30000 + 30000);
         }
-
-        // Start the spawning cycle
         scheduleRandomPicture();
 
-        // ===== KARIM IMAGE UPDATE =====
-        
-        // Update Karim's appearance based on owned items
+        // ===== KARIM IMAGE =====
         function updateKarimImage() {
-            const hasAirpods = shopItems.find(item => item.id === 'airpods').count > 0;
-            const hasBeanie = shopItems.find(item => item.id === 'beanie').count > 0;
-
-            const karimImg = karimElement.querySelector('img');
-
-            // Change image based on owned accessories
-            if (hasAirpods && hasBeanie) {
-                karimImg.src = './resources/Karim-Beanie-Airpods.png'; // Both accessories
-            } else if (hasAirpods) {
-                karimImg.src = './resources/Karim-Airpods.png'; // Just AirPods
-            } else if (hasBeanie) {
-                karimImg.src = './resources/Karim-Beanie.png'; // Just beanie
-            } else {
-                karimImg.src = './resources/karimfistbumper.png'; // Default
-            }
+            const hasAirpods = shopItems.find(i => i.id === 'airpods').count > 0;
+            const hasBeanie  = shopItems.find(i => i.id === 'beanie').count  > 0;
+            const img = karimElement.querySelector('img');
+            if (hasAirpods && hasBeanie) img.src = './resources/Karim-Beanie-Airpods.png';
+            else if (hasAirpods)         img.src = './resources/Karim-Airpods.png';
+            else if (hasBeanie)          img.src = './resources/Karim-Beanie.png';
+            else                         img.src = './resources/karimfistbumper.png';
         }
 
-        // ===== SHOP RENDERING =====
-        
-        // Render all shop items
+        // ===== SHOP RENDER =====
         function renderShop() {
             shopItemsContainer.innerHTML = '';
             shopItems.forEach(item => {
                 const cost = getItemCost(item);
                 const canAfford = coins >= cost;
-
-                // Create shop item card
                 const itemDiv = document.createElement('div');
                 itemDiv.className = `shop-item ${!canAfford ? 'disabled' : ''}`;
                 itemDiv.innerHTML = `
                     <div class="item-header">
-                        <span class="item-name">${item.imageSrc ? `<img src="${item.imageSrc}" style="width: 50px; height: 50px; vertical-align: middle; border-radius: 4px; margin-right: 5px;">` : item.emoji} ${item.name}</span>
+                        <span class="item-name">${item.imageSrc
+                            ? `<img src="${item.imageSrc}" style="width:50px;height:50px;vertical-align:middle;border-radius:4px;margin-right:5px;">`
+                            : item.emoji} ${item.name}</span>
                         <span class="item-count">${item.count}</span>
                     </div>
                     <div class="item-description">${item.description}</div>
                     <div class="item-footer">
                         <span class="item-cost">💰 ${cost}</span>
-                        <span class="item-effect">
-                            ${item.effectType === 'cpc' ? `+${item.effect} per click` : `+${item.effect}/sec`}
-                        </span>
-                    </div>
-                `;
-
-                // Add click handler if affordable
-                if (canAfford) {
-                    itemDiv.addEventListener('click', () => buyItem(item));
-                }
-
+                        <span class="item-effect">${item.effectType === 'cpc' ? `+${item.effect} per click` : `+${item.effect}/sec`}</span>
+                    </div>`;
+                if (canAfford) itemDiv.addEventListener('click', () => buyItem(item));
                 shopItemsContainer.appendChild(itemDiv);
             });
         }
 
-        // ===== DISPLAY UPDATE =====
-        
-        // Update all displayed stats
+        // ===== DISPLAY =====
         function updateDisplay() {
-            coinsDisplay.textContent = Math.floor(coins);
-            coinsPerClickDisplay.textContent = coinsPerClick;
+            coinsDisplay.textContent          = Math.floor(coins);
+            coinsPerClickDisplay.textContent  = coinsPerClick;
             coinsPerSecondDisplay.textContent = coinsPerSecond.toFixed(1);
         }
 
         // ===== PASSIVE INCOME =====
-        
-        // Generate passive income every 100ms
         setInterval(() => {
-            if (coinsPerSecond > 0) {
-                coins += (coinsPerSecond / 10) * globalMultiplier;
-                updateDisplay();
-            }
+            if (coinsPerSecond > 0) { coins += (coinsPerSecond / 10) * globalMultiplier; updateDisplay(); }
         }, 100);
 
-        // ===== INITIALIZATION =====
-        
-        // Initial render
         renderShop();
         updateDisplay();
 
-        // ===== SNAKE GAME LOGIC =====
-        
-        const canvas = document.getElementById('snakeGame');
+        // ===== SNAKE LOGIC =====
+        const canvas  = document.getElementById('snakeGame');
         const context = canvas.getContext('2d');
+        const grid    = 16;
+        let count     = 0;
 
-        const grid = 16;                    // Size of each grid cell
-        let count = 0;                      // Frame counter for game speed
+        const snake = { x: 160, y: 160, dx: grid, dy: 0, cells: [], maxCells: 4 };
+        const apple = { x: 320, y: 320 };
 
-        // Snake object
-        const snake = {
-            x: 160,                         // Starting x position
-            y: 160,                         // Starting y position
-            dx: grid,                       // Movement in x direction
-            dy: 0,                          // Movement in y direction
-            cells: [],                      // Snake body segments
-            maxCells: 4                     // Initial snake length
-        };
+        function getRandomInt(min, max) { return Math.floor(Math.random() * (max - min)) + min; }
 
-        // Apple (food) object
-        const apple = {
-            x: 320,
-            y: 320
-        };
-
-        // Random integer generator
-        function getRandomInt(min, max) {
-            return Math.floor(Math.random() * (max - min)) + min;
-        }
-
-        // Main snake game loop
         function snakeLoop() {
             requestAnimationFrame(snakeLoop);
-
-            if (!snakeRunning) return;      // Don't update if game not active
-
-            // Game speed control (update every 4 frames)
+            if (!snakeRunning) return;
             if (++count < 4) return;
             count = 0;
 
-            // Clear canvas
             context.clearRect(0, 0, canvas.width, canvas.height);
-
-            // Move snake
             snake.x += snake.dx;
             snake.y += snake.dy;
 
-            // Wrap snake around edges
-            if (snake.x < 0) snake.x = canvas.width - grid;
+            if (snake.x < 0)            snake.x = canvas.width  - grid;
             if (snake.x >= canvas.width) snake.x = 0;
-            if (snake.y < 0) snake.y = canvas.height - grid;
+            if (snake.y < 0)            snake.y = canvas.height - grid;
             if (snake.y >= canvas.height) snake.y = 0;
 
-            // Add new head position to front of cells array
             snake.cells.unshift({ x: snake.x, y: snake.y });
-            
-            // Remove tail if snake exceeds max length
-            if (snake.cells.length > snake.maxCells) {
-                snake.cells.pop();
-            }
+            if (snake.cells.length > snake.maxCells) snake.cells.pop();
 
-            // Draw apple
             context.fillStyle = 'red';
             context.fillRect(apple.x, apple.y, grid - 1, grid - 1);
 
-            // Draw snake and check collisions
             context.fillStyle = 'lime';
             snake.cells.forEach((cell, index) => {
                 context.fillRect(cell.x, cell.y, grid - 1, grid - 1);
 
-                // Check if snake ate apple
                 if (cell.x === apple.x && cell.y === apple.y) {
-                    snake.maxCells++;       // Grow snake
-
-                    // Reward player with coins
+                    snake.maxCells++;
                     coins += 25;
                     updateDisplay();
-
-                    // Spawn new apple at random position
                     apple.x = getRandomInt(0, 25) * grid;
                     apple.y = getRandomInt(0, 25) * grid;
                 }
 
-                // Check collision with self
                 for (let i = index + 1; i < snake.cells.length; i++) {
                     if (cell.x === snake.cells[i].x && cell.y === snake.cells[i].y) {
-                        // Reset snake on collision
-                        snake.x = 160;
-                        snake.y = 160;
-                        snake.cells = [];
-                        snake.maxCells = 4;
-                        snake.dx = grid;
-                        snake.dy = 0;
+                        snake.x = 160; snake.y = 160; snake.cells = [];
+                        snake.maxCells = 4; snake.dx = grid; snake.dy = 0;
                     }
                 }
             });
         }
 
-        // Snake controls via arrow keys
         document.addEventListener('keydown', e => {
             if (!snakeRunning) return;
-
-            // Prevent snake from reversing direction
-            if (e.key === 'ArrowLeft' && snake.dx === 0) {
-                snake.dx = -grid; 
-                snake.dy = 0;
-            } else if (e.key === 'ArrowUp' && snake.dy === 0) {
-                snake.dy = -grid; 
-                snake.dx = 0;
-            } else if (e.key === 'ArrowRight' && snake.dx === 0) {
-                snake.dx = grid; 
-                snake.dy = 0;
-            } else if (e.key === 'ArrowDown' && snake.dy === 0) {
-                snake.dy = grid; 
-                snake.dx = 0;
-            }
+            if (e.key === 'ArrowLeft'  && snake.dx === 0) { snake.dx = -grid; snake.dy = 0; }
+            else if (e.key === 'ArrowUp'    && snake.dy === 0) { snake.dy = -grid; snake.dx = 0; }
+            else if (e.key === 'ArrowRight' && snake.dx === 0) { snake.dx =  grid; snake.dy = 0; }
+            else if (e.key === 'ArrowDown'  && snake.dy === 0) { snake.dy =  grid; snake.dx = 0; }
         });
 
-        // Start snake game loop
         requestAnimationFrame(snakeLoop);
+
+
+        // ===================================================================
+        // ===== MUSIC PLAYER ================================================
+        // ===================================================================
+        // Drop song1.mp3, song2.mp3, song3.mp3 into the same folder as this
+        // HTML file. That's it — no other code changes needed.
+
+        const tracks = [
+            { file: 'song1.mp3', label: 'Song 1' },
+            { file: 'song2.mp3', label: 'Song 2' },
+            { file: 'song3.mp3', label: 'Song 3' }
+        ];
+
+        const bgMusic      = document.getElementById('bgMusic');
+        const nowPlaying   = document.getElementById('nowPlaying');
+        const playPauseBtn = document.getElementById('playPauseBtn');
+        const volumeSlider = document.getElementById('volumeSlider');
+        const trackBtns    = document.querySelectorAll('.track-btn');
+
+        let currentTrackIndex = -1;   // -1 = nothing loaded yet
+        let isPlaying         = false;
+
+        // Load and play a track (0, 1, or 2).
+        // Clicking the active track toggles play/pause instead.
+        function switchTrack(index) {
+            if (index === currentTrackIndex) {
+                togglePlayPause();
+                return;
+            }
+
+            currentTrackIndex = index;
+            bgMusic.src    = tracks[index].file;
+            bgMusic.volume = parseFloat(volumeSlider.value);
+
+            bgMusic.play()
+                .then(() => {
+                    isPlaying = true;
+                    playPauseBtn.textContent = '⏸';
+                    nowPlaying.textContent   = '🎵 ' + tracks[index].label;
+                })
+                .catch(() => {
+                    // Browser blocked autoplay before any user gesture —
+                    // the user can hit ▶ to start manually.
+                    isPlaying = false;
+                    playPauseBtn.textContent = '▶';
+                    nowPlaying.textContent   = '▶ Press play for ' + tracks[index].label;
+                });
+
+            // Highlight active button
+            trackBtns.forEach((btn, i) => btn.classList.toggle('active', i === index));
+        }
+
+        // Toggle play / pause on whatever track is loaded
+        function togglePlayPause() {
+            if (currentTrackIndex === -1) { switchTrack(0); return; }
+
+            if (isPlaying) {
+                bgMusic.pause();
+                isPlaying = false;
+                playPauseBtn.textContent = '▶';
+                nowPlaying.textContent   = '⏸ ' + tracks[currentTrackIndex].label;
+            } else {
+                bgMusic.play();
+                isPlaying = true;
+                playPauseBtn.textContent = '⏸';
+                nowPlaying.textContent   = '🎵 ' + tracks[currentTrackIndex].label;
+            }
+        }
+
+        // Volume control
+        function setVolume(value) {
+            bgMusic.volume = parseFloat(value);
+        }
+
+        // Safety net in case loop somehow ends
+        bgMusic.addEventListener('ended', () => {
+            isPlaying = false;
+            playPauseBtn.textContent = '▶';
+        });
+        // ===================================================================
 
     </script>
 </body>
-
 </html>
-
