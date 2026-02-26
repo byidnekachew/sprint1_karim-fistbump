@@ -106,6 +106,57 @@ Despite some feedback loops and iterative fixes, the overall structure still fol
 * Official release approval process  
 
 ---
+## Section 3 — Defect Case Studies
+
+### Bug 1
+
+**GitHub Issue:**  
+[https://github.com/Staiwo100/Karim-Clicker-QA/issues/5](https://github.com/Staiwo100/Karim-Clicker-QA/issues/5)
+
+**Description:**  
+Game crashes when there are too many Nayans (800+).
+
+**Phase that introduced the defect:**  
+Implementation  
+
+**Phase that caught it:**  
+Testing  
+
+**Would the model have caught it earlier?**  
+Even with strict Waterfall adherence, this bug likely would not have been caught earlier because in-depth testing occurs during the formal Testing phase.
+
+**Cost of catching it late:**
+
+* Minimal cost in our case  
+* Required rushed fixes  
+* In a more complex project, this could have delayed delivery and required additional resources  
+
+---
+
+### Bug 2
+
+**GitHub Issue:**  
+[https://github.com/Staiwo100/Karim-Clicker-QA/issues/1](https://github.com/Staiwo100/Karim-Clicker-QA/issues/1)
+
+**Description:**  
+Players cannot buy an upgrade using coins earned through upgrades alone unless they click Karim first.
+
+**Phase that introduced the defect:**  
+Implementation  
+
+**Phase that caught it:**  
+Implementation (preliminary testing), later reinforced during QA  
+
+**Would the model have caught it earlier?**  
+Under strict Waterfall, it would likely have been discovered during the Testing phase instead of Implementation. However, we performed informal testing and caught it early.
+
+**Cost of catching it late:**
+
+* Would have been significantly harder to debug  
+* QA identified the symptom but not the root cause  
+* Early detection during implementation made the fix manageable  
+
+---
 
 ## Contributors
 
@@ -113,8 +164,8 @@ Despite some feedback loops and iterative fixes, the overall structure still fol
 |-------------------|------------|
 |     | 4          |
 | Parth Thite       | 1          |
-|  Lucas Campbell | 2          |
-|  | 3          |
+| Lucas Campbell | 2          |
+| Biruk Yidnekachew | 3          |
 
 ---
 
