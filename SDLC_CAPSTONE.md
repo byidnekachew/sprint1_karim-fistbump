@@ -156,13 +156,46 @@ Under strict Waterfall, it would likely have been discovered during the Testing 
 * QA identified the symptom but not the root cause  
 * Early detection during implementation made the fix manageable  
 
+## Section 4 — QA Assessment
+
+### How QA actually operated
+
+Gate model — We had a specific week dedicated solely to QA.
+
+### Comparison to chosen model
+
+This aligns with the Waterfall model, which includes a distinct Testing phase after Implementation.
+
+### What QA would have looked like under strict adherence
+
+* Direct collaboration between QA and developers during the testing phase  
+* Immediate fixes rather than waiting for a separate week  
+
+---
+
+## Section 5 — Team Retrospective on Process
+
+### The Gap
+
+Lack of formalized testing toward the end when adding features and self-testing before deployment.
+
+### What it cost the team
+
+No significant cost due to small scope and team size.
+
+### One change for Sprint 2
+
+Strictly adhere to requirements and design plans to mitigate scope creep.
+
+
+
 ---
 
 ## Contributors
 
 | Name              | Section Led |
 |-------------------|------------|
-|     | 4          |
+| Jack Daubman     | 4          |
 | Parth Thite       | 1          |
 | Lucas Campbell | 2          |
 | Biruk Yidnekachew | 3          |
